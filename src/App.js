@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <footer>
-        This App is
+        I'm so fucking in love with Ted
         <a
           href="https://github.com/hedoshro/react-weather-app"
           target="_blank"
