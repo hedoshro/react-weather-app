@@ -27,10 +27,7 @@
   color: #bdc1c6;
   font-weight: 700;
 }
-.weatherApp img {
-  width: 60px;
-  height: 60px;
-}
+
 .weatherApp h2 {
   color: #e8eaed;
 }
@@ -47,12 +44,10 @@
   padding-left: 6px;
   vertical-align: top;
 }
+
 .weatherApp a {
   color: #e8eaed;
   text-decoration: none;
-}
-.weatherApp a:hover {
-  color: blueviolet;
 }
 
 .weatherApp .weatherDetails {
@@ -83,4 +78,13 @@
   color: #9aa0a6;
   font-size: 16px;
   line-height: 22px;
+}
+/*WeatherIcon component*/
+.WeatherIcon canvas {
+  position: relative;
+  left: 10px;
+}
+/* WeatherTemperature component*/
+.bothUnits a:visited {
+  color: #9aa0a6;
 }

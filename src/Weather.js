@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import "./SetDateAndTime";
+import "./WeatherInfo";
+import "./SetDateAndTime";
+import WeatherInfo from "./WeatherInfo";
 export default function Weather() {
   const [city, setCity] = useState("Tehran");
 
@@ -13,7 +17,8 @@ export default function Weather() {
       wind: response.data.wind.speed,
       city: response.data.city,
       description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
+      date: new Date(response.data.time * 1000),
+      icon: response.data.condition.icon,
     });
   }
   function search() {
@@ -34,8 +39,7 @@ export default function Weather() {
       <div className="weatherApp">
         <nav className="navbar navbar  d-flex justify-content-left">
           <form
-            className="form-inline d-flex justify-content-around 
-        "
+            className="form-inline d-flex justify-content-around"
             onSubmit={handleSubmit}
           >
             <input
@@ -50,49 +54,11 @@ export default function Weather() {
             </button>
           </form>
         </nav>
-
-        <p>
-          Results for <span className="city">{weatherData.city}</span>
-        </p>
-        <div className="row">
-          <div className="col-6 d-flex space-between">
-            <img
-              src={weatherData.icon}
-              alt={weatherData.description}
-              className="img-fluid"
-            />
-
-            <h2>
-              <span className="currentTemp">{weatherData.temp}</span>{" "}
-              <span className="bothUnits">
-                <a href="/">°C</a> |<a href="/">°F</a>
-              </span>
-            </h2>
-
-            <ul className="weatherDetails">
-              <li>description</li>
-              <li>Humidity: 10%</li>
-              <li>Wind: 8 km/h</li>
-            </ul>
-          </div>
-          <div className="col-6 ">
-            <ul className="dateAndTime">
-              <li>
-                <h2>Weather</h2>
-              </li>
-              <li>
-                <div>Monday 10:00</div>
-              </li>
-              <li>
-                <div>Mostly sunny</div>
-              </li>{" "}
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo info={weatherData} />
       </div>
     );
   } else {
-    handleSubmit("Tehran");
+    search();
     return "Loading...";
   }
 }
