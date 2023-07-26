@@ -12,7 +12,7 @@ export default function Weather() {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      temp: response.data.temperature.current,
+      temp: Math.round(response.data.temperature.current),
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       city: response.data.city,
